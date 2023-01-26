@@ -15,7 +15,7 @@ const CONFIG_API = {
     }
 }
 
-class API {
+export class API {
     constructor(config) {
         this._url = config.url;
         this._headers = config.headers;
@@ -38,6 +38,12 @@ class API {
             headers: this._headers
         }).then(this._onResponse)
     }
+
+    deleteCatById(idCat){
+        return fetch(`${this._url}/delete/${idCat}`, {
+             method: 'DELETE',
+         }).then(this._onResponce)
+     }
 }
 
-const api = new API(CONFIG_API);
+export const api = new API(CONFIG_API);
